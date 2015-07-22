@@ -1,0 +1,56 @@
+﻿@-webkit-keyframes bladespin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes bladespin {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes bladespin {
+    0% {
+        -o-transform: rotate(0deg);
+    }
+
+    100% {
+        -o-transform: rotate(360deg);
+    }
+}
+
+@keyframes bladespin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-wheel {
+    -webkit-animation: bladespin linear 5 normal;
+    -webkit-animation-duration: 4s;
+    -moz-animation: bladespin linear 5 normal;
+    -moz-animation-duration: 4s;
+    -o-animation: bladespin linear 5 normal;
+    -o-animation-duration: 4s;
+}
+
+.wheel-price-position {
+  -webkit-transform: rotate(30deg); 
+  -moz-transform:    rotate(30deg); 
+  -ms-transform:     rotate(30deg); 
+  -o-transform:      rotate(30deg);  
+}
+
