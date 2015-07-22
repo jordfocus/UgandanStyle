@@ -1,3 +1,62 @@
+/* 9f00da
+   b44ed9
+   540073
+
+*/
+
 body {
     font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d75a1b;
+    color: white;
+    background-image: url('../img/bg-texture.png');
+    background-size: 200%;
+}
+
+
+.question {
+}
+
+.question h1 {
+    margin-top: 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.question .details {
+    margin-top: 10px;
+    font-size: 70%;
+    font-weight: normal;
+}
+
+.answer {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 150%;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
+.answer.show_correct {
+    background-color: rgba(20, 170, 20, 0.7);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.answer.show_incorrect {
+    background-color: rgba(170, 20, 20, 0.7);
+}
+
+.answer:active {
+    color: #67008c;
+    background-color: white;
+}
+
+.status {
+    font-size: 200%;
+    font-weight: bold;
+    text-align: center;
 }
