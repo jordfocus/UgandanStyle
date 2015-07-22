@@ -151,7 +151,11 @@ DoneQuizView = React.createClass({
         }
 
         if (can_win) {
-            status_block =  <div onClick={this.win_prize} className="wheel">I AM A ROULETTE WHEEL OR OTHER SOCIALLY ACCEPTABLE GAMBLING DEVICE ASSUMING SUCH A THING EXISTS WHICH IS NOT A SAFE ASSUMPTION WORDS WORDS WORDS {prize_block} <button onClick={this.props.bail} className={"dismiss " + (this.state.allow_continue ? "visible" : "") }>Play Again!</button></div>;
+            status_block =  <div onClick={this.win_prize} className="wheel">
+			<div id="price-content">
+				<img id="rotating_image" className="spin-wheel" onerror="this.style.opacity=0" src="https://upload.wikimedia.org/wikipedia/en/7/7c/Philippine_Wheel_2.png"></img>
+			</div>
+			<button onClick={this.props.bail} className={"dismiss " + (this.state.allow_continue ? "visible" : "") }>Play Again!</button></div>;
         } else {
             status_block = <div><div className="sad-face">:(</div><div>You need to get at least {Math.ceil(this.props.quiz.questions.length * cutoff_pctage)} questions right to win!<div><button onClick={this.props.retry}>Play again!</button></div></div></div>
         }
