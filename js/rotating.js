@@ -5,6 +5,6 @@
             $("#rotating_image").removeClass("spin-wheel");
             $("#rotating_image").addClass("wheel-price-position");
 
-            // alert('Animation finished! Your price is!!!'); 
+            // alert('Animation finished! Your price is!!!');  
         });
 });
