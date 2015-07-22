@@ -1,7 +1,7 @@
 var DashboardView = React.createClass({
     render: function(){
         return  <div>
-                    <div className="header"></div>
+                    <div className="header" onClick={this.props.start_quiz.bind(null, Quizzes.testquiz)}></div>
                     <div className="categories">
                         <div className="category condom">Condoms</div>
                         <div className="category heart">Relationships</div>

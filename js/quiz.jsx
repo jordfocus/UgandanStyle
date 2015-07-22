@@ -17,26 +17,33 @@ QuizView = React.createClass({
         });
     },
     next_question: function(answered_correct){
+        if (this.state.question_idx == this.props.quiz.questions.length - 1) {
+            this.refs.done_view.reset();
+        }
         this.setState({
             question_idx: this.state.question_idx + 1,
             total_correct: this.state.total_correct + (answered_correct ? 1 : 0)
         });
+
     },
     bail: function(){
         this.props.bail();
     },
     render: function(){
+        if (!this.props.quiz) return null;
         var question = this.props.quiz.questions[this.state.question_idx];
-        if (question) {
-            return (<div className="question">
+        var question_blocks = _.map(this.props.quiz.questions, function(question, idx) {
+            return (<div className={"top-slide-block " + (idx == this.state.question_idx ? "visible" : "")} key={idx}>
                         <QuestionView question={question} next_question={this.next_question}/>
                         <div className="status">
                             {this.props.quiz.questions.length - this.state.question_idx} to go!
                         </div>
                     </div>);
-        } else {
-            return (<div className="done"><DoneQuizView quiz={this.props.quiz} score={this.state.total_correct} retry={this.reset_quiz} bail={this.bail}/></div>);
-        }
+        }.bind(this));
+        return (<div>
+                    <div className="questions">{question_blocks}</div>
+                    <div className={"top-slide-block done " + (!question ? "visible" : "")} ><DoneQuizView quiz={this.props.quiz} score={this.state.total_correct} retry={this.reset_quiz} bail={this.bail} ref="done_view"/></div>
+                </div>);
     }
 });
 
@@ -125,6 +132,12 @@ DoneQuizView = React.createClass({
     win_prize: function(){
         // Start wheel spinning or w/e
         setTimeout(this.show_prize.bind(this), 1000)
+    },
+    reset: function(){
+        this.setState({
+            prize: null,
+            allow_continue: false
+        });
     },
     render: function(){
         var pctage = this.props.score / this.props.quiz.questions.length;
