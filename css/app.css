@@ -237,3 +237,19 @@ button {
 .next-button {
     text-align: center;
 }
+
+
+/* login */
+
+.login {
+    text-align: center;
+}
+
+h2 {
+    font-size: 300%;
+    margin: 200px 0;
+}
+
+.login  button {
+    width: 300px;
+}
