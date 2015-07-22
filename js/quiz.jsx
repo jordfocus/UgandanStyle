@@ -1,8 +1,8 @@
 QuizView = React.createClass({
     getInitialState: function(){
         return {
-            question_idx: 3,
-            total_correct: 2,
+            question_idx: 0,
+            total_correct: 0,
         };
     },
     componentWillReceiveProps: function(props){
@@ -70,16 +70,10 @@ QuestionView = React.createClass({
             this.setState({
                 correct: true
             });
-            setTimeout(function(){
-                this.props.next_question(true);
-            }.bind(this), 1000);
         } else {
             this.setState({
                 incorrect: true
             });
-            setTimeout(function(){
-                this.props.next_question(false);
-            }.bind(this), 5000);
         }
     },
     render: function(){
@@ -89,8 +83,13 @@ QuestionView = React.createClass({
                 answer: true,
                 show_correct: (this.state.correct || this.state.incorrect) && is_correct,
                 show_incorrect: this.state.incorrect && !is_correct
-            })
-            return (<div className={a_classes} key={idx} onClick={this.select_answer.bind(this, idx)}>{answer}</div>);
+            });
+            var show_explanation = is_correct && (this.state.correct || this.state.incorrect);
+            var explanation;
+            if (show_explanation) {
+                explanation = <div className="explanation">{this.props.question.explanation}<div className="next-button" onClick={this.props.next_question.bind(this.props, this.state.correct)}><button>Next</button></div></div>;
+            }
+            return (<div><div className={a_classes} key={idx} onClick={this.select_answer.bind(this, idx)}>{answer}</div>{explanation}</div>);
         }.bind(this));
 
         var q_classes = classNames({
@@ -104,6 +103,7 @@ QuestionView = React.createClass({
         } else {
             details_content = this.props.question.details;
         }
+        if (!this.props.question.details) details_content = null;
 
         return (<div className={q_classes}><h1 onClick={this.setState.bind(this, {show_details: true}, null)}>{this.props.question.stem}<div className="details">{details_content}</div></h1>{options}</div>);
     }

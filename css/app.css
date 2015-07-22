@@ -146,7 +146,85 @@ button {
     transition: opacity 0.2s ease-in-out;
 }
 
+.view-wrapper {
+    display: none;
+}
 .view-wrapper:not(.active) {
     opacity: 0;
 
+}
+
+/* dashboard */
+.header {
+    background-image: url('../img/header.png');
+    height: 234px;
+    width: 100%;
+    position: relative;
+}
+
+.header::after {
+    content: '...';
+    font-size: 70px;
+    font-family: serif;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    display: block;
+    margin-left: -37px;
+}
+
+.categories {
+    text-align: center;
+}
+
+.category {
+    width: 45%;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+}
+
+.category::before {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100px;
+    background-size: contain;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.category.condom::before {
+    background-image: url('../img/condom.svg');
+}
+
+.category.m2m::before {
+    background-image: url('../img/male_2.svg');
+}
+
+.category.heart::before {
+    background-image: url('../img/heart.svg');
+}
+
+.category.st::before {
+    background-image: url('../img/1st.svg');
+}
+
+.category.stethoscope::before {
+    background-image: url('../img/stethoscope.svg');
+}
+
+.category.plus::before {
+    background-image: url('../img/plus.svg');
+}
+
+.explanation {
+    margin: 10px;
+    font-size: 130%;
+}
+
+.next-button {
+    text-align: center;
 }

@@ -4,14 +4,14 @@ var Quizzes = {
         title: "Test Quiz",
         questions: [
             {
-                stem: "what colour is the sky? this is a needlessly long question...",
-                details: "this is foldable content that can pop up after the fact",
-                answers: ["blue", "green", "orange", "red"]
+                stem: "Can I get pregnant the first time?",
+                answers: ["Yes", "No"],
+                explanation: "You can get pregnant any time you have sex - so always use birth control."
             },
             {
-                stem: "what colour is grass",
-                details: "this is foldable content that can pop up after the fact",
-                answers: ["green", "orange", "red", "blue"]
+                stem: "How many condoms should we use?",
+                answers: ["1", "2", "3", "4"],
+                explanation: "Only use 1 condom - otherwise they might tear"
             }
         ]
     }
