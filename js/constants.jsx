@@ -16,3 +16,10 @@ var Quizzes = {
         ]
     }
 };
+
+// Randomly selected if they win
+var Prizes = [
+    "20 minutes of airtime",
+    "10MB of data",
+    "a box of kittens"
+];
