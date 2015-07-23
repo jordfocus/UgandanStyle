@@ -131,13 +131,16 @@ DoneQuizView = React.createClass({
     },
     win_prize: function(){
         // Start wheel spinning or w/e
-        setTimeout(this.show_prize.bind(this), 1000)
+        this.setState({spinning: true});
+        setTimeout(this.show_prize.bind(this), 3000);
     },
     reset: function(){
         this.setState({
             prize: null,
+            spinning: false,
             allow_continue: false
         });
+        this.spin_running = null;
     },
     render: function(){
         var pctage = this.props.score / this.props.quiz.questions.length;
@@ -150,17 +153,19 @@ DoneQuizView = React.createClass({
             prize_block = <div className="prize">{this.state.prize}</div>;
         }
 
+        if (!this.spin_running && can_win) {
+            this.spin_running = setTimeout(this.win_prize, 1000);
+        }
+
         if (can_win) {
-            status_block =  <div onClick={this.win_prize} className="wheel">
-			<div id="price-content">
-				<img id="rotating_image" className="spin-wheel" onerror="this.style.opacity=0" src="award_wheel.png"></img>
-			</div>
-			<button onClick={this.props.bail} className={"dismiss " + (this.state.allow_continue ? "visible" : "") }>Play Again!</button></div>;
+            status_block = <div className="wheel">
+        				<img id="rotating_image" className={"spin-wheel " + (this.state.spinning ? "spinning" : "")} onerror="this.style.opacity=0" src="img/wheel.svg"></img>{prize_block}
+        			<button onClick={this.props.bail} className={"dismiss " + (this.state.allow_continue ? "visible" : "") }>Play Again!</button>
+                </div>;
         } else {
             status_block = <div><div className="sad-face">:(</div><div>You need to get at least {Math.ceil(this.props.quiz.questions.length * cutoff_pctage)} questions right to win!<div><button onClick={this.props.retry}>Play again!</button></div></div></div>
         }
 
-        
         return <div><h1>You got {this.props.score}/{this.props.quiz.questions.length}!</h1><div className="status-block">{status_block}</div></div>;
     }
 });

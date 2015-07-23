@@ -39,14 +39,14 @@
 }
 
 .spin-wheel {
-    -webkit-animation: bladespin linear 3 normal;
+    /*-webkit-animation: bladespin linear 3 normal;
     -webkit-animation-duration: 2s;
     -moz-animation: bladespin linear 3 normal;
     -moz-animation-duration: 2s;
     -o-animation: bladespin linear 3 normal;
-    -o-animation-duration: 2s;
-    height:375px;
-    width:375px;
+    -o-animation-duration: 2s;*/
+    height:355px;
+    width:355px;
 }
 
 .wheel-price-position {
