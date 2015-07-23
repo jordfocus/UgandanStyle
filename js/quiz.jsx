@@ -153,7 +153,7 @@ DoneQuizView = React.createClass({
         if (can_win) {
             status_block =  <div onClick={this.win_prize} className="wheel">
 			<div id="price-content">
-				<img id="rotating_image" className="spin-wheel" onerror="this.style.opacity=0" src="https://upload.wikimedia.org/wikipedia/en/7/7c/Philippine_Wheel_2.png"></img>
+				<img id="rotating_image" className="spin-wheel" onerror="this.style.opacity=0" src="award_wheel.png"></img>
 			</div>
 			<button onClick={this.props.bail} className={"dismiss " + (this.state.allow_continue ? "visible" : "") }>Play Again!</button></div>;
         } else {
